@@ -1,0 +1,8 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Atelier Admin</title><link rel="stylesheet" href="<?php echo e(asset('css/store.css')); ?>"></head><body class="admin-body">
+<header class="admin-top"><a class="brand" href="<?php echo e(route('admin.dashboard')); ?>">ATELIER<span>.</span> <small>ADMIN</small></a><div><a href="<?php echo e(route('home')); ?>">View store ↗</a> <form method="POST" action="<?php echo e(route('logout')); ?>"><?php echo csrf_field(); ?><button class="text-button">Logout</button></form></div></header>
+<div class="admin-shell"><aside class="admin-sidebar"><a href="<?php echo e(route('admin.dashboard')); ?>">Overview</a><a href="<?php echo e(route('admin.products.index')); ?>">Products</a><a href="<?php echo e(route('admin.categories.index')); ?>">Categories</a><a href="<?php echo e(route('admin.orders.index')); ?>">Orders</a></aside><main class="admin-main">
+<?php if(session('success')): ?><div class="flash success"><?php echo e(session('success')); ?></div><?php endif; ?> <?php if(session('error')): ?><div class="flash error"><?php echo e(session('error')); ?></div><?php endif; ?>
+<?php if($errors->any()): ?><div class="flash error"><?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><div><?php echo e($error); ?></div><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?></div><?php endif; ?>
+<?php echo $__env->yieldContent('admin-content'); ?>
+</main></div></body></html>
+<?php /**PATH C:\laragon\www\experiment\resources\views/admin/layout.blade.php ENDPATH**/ ?>

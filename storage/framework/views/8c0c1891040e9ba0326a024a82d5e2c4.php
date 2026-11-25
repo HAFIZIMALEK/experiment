@@ -1,0 +1,1 @@
+<?php /**PATH C:\laragon\www\experiment\resources\views/padu.blade.php ENDPATH**/ ?>

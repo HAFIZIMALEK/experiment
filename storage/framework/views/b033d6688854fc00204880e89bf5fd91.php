@@ -1,0 +1,10 @@
+<?php $__env->startSection('admin-content'); ?>
+<p class="eyebrow">STORE MANAGEMENT</p><h1>Overview</h1><p class="muted">A quick look at your store activity.</p>
+<div class="stats-grid">
+<?php $__currentLoopData = [['Products',$stats['products']],['Categories',$stats['categories']],['Orders',$stats['orders']],['Customers',$stats['customers']],['Revenue','RM '.number_format($stats['revenue'],2)]]; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $stat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><div class="stat-card"><span><?php echo e($stat[0]); ?></span><strong><?php echo e($stat[1]); ?></strong></div><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+</div>
+<div class="admin-section-head"><h2>Recent orders</h2><a class="under-link" href="<?php echo e(route('admin.orders.index')); ?>">View all ↗</a></div>
+<div class="table-wrap"><table class="data-table"><thead><tr><th>Order</th><th>Customer</th><th>Date</th><th>Total</th><th>Status</th></tr></thead><tbody><?php $__empty_1 = true; $__currentLoopData = $orders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $order): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?><tr><td><?php echo e($order->order_number); ?></td><td><?php echo e($order->customer_name); ?></td><td><?php echo e($order->created_at->format('d M Y')); ?></td><td>RM <?php echo e(number_format($order->total,2)); ?></td><td><?php echo e(ucfirst($order->status)); ?></td></tr><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?><tr><td colspan="5">No orders yet.</td></tr><?php endif; ?></tbody></table></div>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.layout', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\laragon\www\experiment\resources\views/admin/dashboard.blade.php ENDPATH**/ ?>
