@@ -1,0 +1,10 @@
+Laravel 12 middleware alias registration:
+Open bootstrap/app.php and add the import:
+use App\Http\Middleware\AdminMiddleware;
+
+Inside ->withMiddleware(function (Middleware $middleware) { ... }), add:
+$middleware->alias([
+    'admin' => AdminMiddleware::class,
+]);
+
+If you already have aliases, add only the 'admin' entry to the existing array.

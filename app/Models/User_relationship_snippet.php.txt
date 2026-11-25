@@ -1,0 +1,21 @@
+Open app/Models/User.php. Keep its existing traits, imports and methods.
+
+1. Add these imports:
+use Illuminate\\Database\\Eloquent\\Relations\\HasMany;
+use Illuminate\\Database\\Eloquent\\Relations\\HasOne;
+
+2. Add `role` to the existing `$fillable` array:
+'role',
+
+3. Add these methods inside the User class:
+public function cart(): HasOne
+{
+    return $this->hasOne(\\App\\Models\\Cart::class);
+}
+
+public function orders(): HasMany
+{
+    return $this->hasMany(\\App\\Models\\Order::class);
+}
+
+Do not create a second User class. This is a patch for Laravel's existing User model.
